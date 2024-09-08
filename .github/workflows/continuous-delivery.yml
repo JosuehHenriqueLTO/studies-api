@@ -1,0 +1,18 @@
+name: Continuous Delivery
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Simulation CD
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: |
+            '**.py'
+            README.md
