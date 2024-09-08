@@ -17,3 +17,13 @@ jobs:
           path: |
             '**.py'
             README.md
+  deploy:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    needs: deliver
+    steps:
+      - uses: action/download-artifact@v4
+        with:
+          name: my-artifact
+      - name: Display structure of downloaded files
+        run: ls -R
